@@ -1,0 +1,1 @@
+ACTION=="add|remove", SUBSYSTEM=="usb", ENV{DISPLAY}=":0", ENV{XAUTHORITY}="/home/pliski/.Xauthority" RUN+="/usr/bin/su pliski -c '/home/pliski/bin/usb-notify/usb-notify.sh $parent'"   
