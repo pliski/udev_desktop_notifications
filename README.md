@@ -4,7 +4,7 @@ Get a desktop notification when a USB device state changes.
 
 ## How it works
 
-The file `*.rules` contains the **udev** rule to filter udev events: when match is found the script `usb-notify.sh` is executed.
+The file `*.rules` contains the **udev** rule to filter udev events: when a match is found the script `usb-notify.sh` is executed.
 
 `usb-notify.sh` uses *notify-send* to send a notification via **dbus**.
 
@@ -17,6 +17,12 @@ sudo cp ./90-usb-notify.rules /usr/local/lib/udev/rules.d/ # or /etc/udev/rules.
 sudo chown root:root /usr/local/lib/udev/rules.d/90-usb-notify.rules 
 chmod 0700 ./usb-notify.sh
 sudo udevadm control --reload
+```
+
+If you use **dunst** as a notification daemon you can append the content of `dunst.usbnotify` to its config file:
+
+```sh
+cat ./dunstrc.usbnotify >> ~/.config/dunst/dunstrc
 ```
 
 ## ToDos
