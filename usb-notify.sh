@@ -4,18 +4,19 @@ export XAUTHORITY=/home/pliski/.Xauthority
 export DISPLAY=:0
 export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"
 
-busname=$1;
+busname="/dev/$1";
+devpath=$2;
 
-# uncomment for debug
-# echo "changes in USB. " > /tmp/test.out
-# i=1;
-# for param in "$@" 
-# do
-#     echo -e "$i: $param \n " >> /tmp/test.out;
-#     i=$((i + 1));
-# done
+deviceDetails=$(lsusb -D ${busname} 2>/dev/null | head -n 1)
+
+deviceName=$(cut -d " " -f4- <<< ${deviceDetails})
+# deviceID=$(cut -d " " -f-3 <<< ${deviceDetails})
+
+# Slim notification
+/usr/bin/notify-send -a "USB-notify" -c "device.change" "$deviceName" "$busname" -r 1337
+
+# Full notification
+# /usr/bin/notify-send -a "USB-notify" -c "device.change" "$deviceName" "$deviceID \n $busname \n $devpath" -r 1337
 
 # dunstify is like notify-send but specific to dunst
-#dunstify "USB change"
-/usr/bin/notify-send "USB: /dev/$busname"
-
+# dunstify "USB change"

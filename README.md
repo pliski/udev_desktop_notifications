@@ -9,7 +9,7 @@ the file *.rules contains the udev rule to filter udev events; when it find a ma
 ## Installation 
 
 ```sh
-sudo cp ./90-usb-notify.rules /usr/local/lib/udev/rules.d/
+sudo cp ./90-usb-notify.rules /usr/local/lib/udev/rules.d/ # or /etc/udev/rules.d/
 sudo chown root:root /usr/local/lib/udev/rules.d/90-usb-notify.rules 
 chmod 0700 ./usb-notify.sh
 sudo udevadm control --reload
@@ -32,7 +32,8 @@ man udev
 ## Tips
 
 ```sh
-lsusb -D /dev/bus/usb/xxx/yyy
-
-udevadm info --attribute-walk --name=/dev/bus/usb/xxx/yyy
+$> lsusb -D /dev/bus/usb/xxx/yyy
+$> dbus-monitor
+$> udevadm control --reload-rules && udevadm trigger // reload udev rules
+$> udevadm info --attribute-walk --name=/dev/bus/usb/xxx/yyy
 ```
