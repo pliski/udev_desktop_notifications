@@ -4,7 +4,11 @@ Get a desktop notification when a USB device state changes.
 
 ## How it works
 
-the file *.rules contains the udev rule to filter udev events; when it find a match it execute `usb-notify.sh` that use `notify-send` to display desktop notification (for example with **dunst**).
+The file `*.rules` contains the **udev** rule to filter udev events: when match is found the script `usb-notify.sh` is executed.
+
+`usb-notify.sh` uses *notify-send* to send a notification via **dbus**.
+
+The desktop notification daemon (like [dunst](https://dunst-project.org/) for example) will then catch the notification and display a message with the given informations.
 
 ## Installation 
 
@@ -18,7 +22,7 @@ sudo udevadm control --reload
 ## ToDos
 
 * write an installer;
-* get the device and vendor names of the device from the udev facilites;
+* ~~get the device and vendor names of the device from the udev facilites~~ ;
 * implement a dunst action to display more infos on mouse click.
 
 ## References
@@ -34,6 +38,6 @@ man udev
 ```sh
 $> lsusb -D /dev/bus/usb/xxx/yyy
 $> dbus-monitor
-$> udevadm control --reload-rules && udevadm trigger // reload udev rules
+$> udevadm control --reload-rules && udevadm trigger # reloads udev rules
 $> udevadm info --attribute-walk --name=/dev/bus/usb/xxx/yyy
 ```
