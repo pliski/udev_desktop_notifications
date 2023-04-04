@@ -13,16 +13,17 @@ The desktop notification daemon (like [dunst](https://dunst-project.org/) for ex
 ## Installation 
 
 ```sh
+cp ./usb-notify.sh ~/.local/bin/
+chmod 0700 ~/.local/bin/usb-notify.sh
 sudo cp ./90-usb-notify.rules /usr/local/lib/udev/rules.d/ # or /etc/udev/rules.d/
 sudo chown root:root /usr/local/lib/udev/rules.d/90-usb-notify.rules 
-chmod 0700 ./usb-notify.sh
 sudo udevadm control --reload
 ```
 
 If you use **dunst** as a notification daemon you can append the content of `dunst.usbnotify` to its config file:
 
 ```sh
-cat ./dunstrc.usbnotify >> ~/.config/dunst/dunstrc
+cat ./dunstrc.append >> ~/.config/dunst/dunstrc
 ```
 
 ## ToDos
