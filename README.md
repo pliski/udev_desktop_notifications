@@ -20,10 +20,11 @@ sudo chown root:root /usr/local/lib/udev/rules.d/90-usb-notify.rules
 sudo udevadm control --reload
 ```
 
-If you use **dunst** as a notification daemon you can append the content of `dunst.usbnotify` to its config file:
+If you use **dunst** as a notification daemon, you can append the content of `dunst.append` to its config file:
 
 ```sh
 cat ./dunstrc.append >> ~/.config/dunst/dunstrc
+killall dunst # reloads the config
 ```
 
 ## ToDos
