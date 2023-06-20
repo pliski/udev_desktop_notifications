@@ -10,7 +10,7 @@ The file `*.rules` contains the **udev** rule to filter udev events: when a matc
 
 The desktop notification daemon (like [dunst](https://dunst-project.org/) for example) will then catch the notification and display a message with the given informations.
 
-## Installation 
+## Installation
 
 ```sh
 cp ./usb-notify.sh ~/.local/bin/
