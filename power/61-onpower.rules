@@ -1,0 +1,2 @@
+# Rule for when switching to powersupply
+SUBSYSTEM=="power_supply",ENV{POWER_SUPPLY_ONLINE}=="1",ENV{XAUTHORITY}="/home/pliski/.Xauthority" RUN+="/usr/bin/su pliski -c '/home/pliski/.local/bin/power-notify.sh $parent $devpath'"
