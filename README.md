@@ -1,4 +1,4 @@
-# udev dunst Notifier
+# udev desktop notifications
 
 Get a desktop notification on udev events.
 
